@@ -1,0 +1,10 @@
+{
+  "measuredAt": "2026-10-13T22:56:34.847Z",
+  "endpoint": "POST /api/auth/login",
+  "attemptsMade": 35,
+  "firstRateLimitedAtAttempt": 31,
+  "rateLimited": true,
+  "statusSequence": "401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,429,429,429,429,429",
+  "configuredLimit": "RATE_LIMIT_LOGIN_PER_15MIN (default 30 per 15 minutes per IP)",
+  "note": "run against the shipped defaults, not the raised limits used by metrics.mjs"
+}

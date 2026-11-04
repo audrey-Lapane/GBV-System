@@ -1,0 +1,530 @@
+{
+  "setup": {
+    "timestamp": "2026-10-13T22:53:12.727Z",
+    "os": "Linux 6.18.44-fc-v114",
+    "cpu": "2 cores",
+    "ram": "7 GB",
+    "node": "v22.22.0",
+    "hardhat": "^2.29.1",
+    "ethers": "^6.17.0",
+    "database": "10.11.14-MariaDB-0ubuntu0.24.04.1",
+    "ipfs": "Kubo RPC stand-in (sandbox); run against IPFS Desktop for the dissertation",
+    "note": "RATE_LIMIT_SUBMITS_PER_HOUR was raised for this run so the harness could make its hundreds of trials; the shipped default is 20 per hour per IP",
+    "chainId": 31337,
+    "contracts": {
+      "ReportRegistry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "ConsentManagement": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "AuditTrail": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+    }
+  },
+  "decisionAccuracy": {
+    "trials": 100,
+    "correct": 100,
+    "decisionAccuracy": 100,
+    "falseGrantRate": 0,
+    "falseDenyRate": 0,
+    "perScenario": {
+      "consent active": "20/20",
+      "no consent": "20/20",
+      "wrong role": "20/20",
+      "revoked": "20/20",
+      "expired": "20/20"
+    },
+    "latencyMsByScenario": {
+      "consent active": {
+        "n": 20,
+        "mean": 129.1,
+        "sd": 7.9,
+        "p95": 137,
+        "min": 117.7,
+        "max": 149.7
+      },
+      "no consent": {
+        "n": 20,
+        "mean": 115.8,
+        "sd": 9.2,
+        "p95": 132.5,
+        "min": 105.8,
+        "max": 142.5
+      },
+      "wrong role": {
+        "n": 20,
+        "mean": 111.3,
+        "sd": 6,
+        "p95": 120.2,
+        "min": 98.9,
+        "max": 120.6
+      },
+      "revoked": {
+        "n": 20,
+        "mean": 111.7,
+        "sd": 9.6,
+        "p95": 130.3,
+        "min": 97.4,
+        "max": 134.1
+      },
+      "expired": {
+        "n": 20,
+        "mean": 108.5,
+        "sd": 8.6,
+        "p95": 120.7,
+        "min": 96.9,
+        "max": 122.2
+      }
+    }
+  },
+  "revocationEffect": {
+    "repetitions": 20,
+    "deniedOnFirstAttemptAfterRevoke": 20,
+    "pass": true
+  },
+  "expiryAccuracy": {
+    "permittedBeforeExpiry": true,
+    "permittedAfterExpiry": false,
+    "pass": true
+  },
+  "forgedChangeRejection": {
+    "attempts": 20,
+    "accepted": 0,
+    "pass": true,
+    "kinds": [
+      "grant signed by random key",
+      "grant signed by administrator",
+      "replayed genuine signature (already spent)",
+      "revoke signed by wrong key"
+    ],
+    "sampleResponse": {
+      "kind": "grant signed by random key",
+      "status": 409,
+      "error": "The signature does not match the key on record."
+    }
+  },
+  "anonymiserOnCanary": {
+    "removed": {
+      "room": 1,
+      "email": 1,
+      "id_number": 1,
+      "phone": 1,
+      "number": 1
+    }
+  },
+  "identityLeak": {
+    "canariesPlanted": 9,
+    "surfacesScanned": [
+      "MySQL (all tables)",
+      "raw IPFS blocks",
+      "on-chain logs",
+      "server log"
+    ],
+    "occurrencesFound": 0,
+    "found": {
+      "mysql": [],
+      "ipfs": [],
+      "chain": [],
+      "logs": []
+    },
+    "ipfsSampleIsCiphertext": true,
+    "pass": true
+  },
+  "identityFields": {
+    "reporterTablesChecked": 7,
+    "identityColumnsFound": 0,
+    "hits": [],
+    "reviewedFalsePositives": [
+      {
+        "t": "sync_state",
+        "c": "name",
+        "actualValues": "events",
+        "reason": "event-listener checkpoint label, not a person"
+      }
+    ],
+    "note": "institutional_users and staff_lookups intentionally hold staff identity, which the design requires for accountability",
+    "pass": true
+  },
+  "integrityTamper": {
+    "repetitions": 20,
+    "rejected": 20,
+    "pass": true,
+    "sample": {
+      "permitted": true,
+      "integrityError": "Integrity check failed: this item was changed after it was submitted and has not been opened."
+    }
+  },
+  "erasure": {
+    "withdrawTransaction": "0x2939e861f35d5637797dc9bd67d35e7c1c83cccda08e9794bfdf15a7490bb761",
+    "retrievalFails": true,
+    "keyRecordsRemaining": 0,
+    "ipfsUnpinned": true,
+    "savedCiphertextDecryptable": false,
+    "pass": true
+  },
+  "auditCompleteness": {
+    "reports": 40,
+    "onChainEntries": 156,
+    "mirrorRows": 156,
+    "completeness": 100,
+    "pass": true
+  },
+  "auditTamperDetection": {
+    "cleanBeforeEdit": true,
+    "mismatchesAfterEdit": 1,
+    "detected": true,
+    "cleanAfterRestore": true,
+    "example": {
+      "reportId": "0x3753138dc7da3d3682e1899e30defe2ae53c80547e20a98382c232c55aebb13a",
+      "txHash": "0x5f3138933f50ec3add06c035c97d8f564723f1d992af092b65801ea46ab7feb9",
+      "problem": "field 'permitted' differs",
+      "chain": 0,
+      "mirror": 1
+    },
+    "pass": true
+  },
+  "historyFromIdOnly": {
+    "retrievedWithIdAndSecret": true,
+    "historyEvents": 9,
+    "refusedWithWrongSecret": true,
+    "pass": true
+  },
+  "latency": {
+    "warmupDiscarded": 3,
+    "runs": 30,
+    "ms": {
+      "submit": {
+        "n": 30,
+        "mean": 245.6,
+        "sd": 12.4,
+        "p95": 263,
+        "min": 224.9,
+        "max": 264.4
+      },
+      "grant": {
+        "n": 30,
+        "mean": 439.7,
+        "sd": 12.8,
+        "p95": 462.1,
+        "min": 414.9,
+        "max": 463.1
+      },
+      "accessPermitted": {
+        "n": 30,
+        "mean": 118.1,
+        "sd": 5.6,
+        "p95": 128.2,
+        "min": 109.6,
+        "max": 134.3
+      },
+      "accessDenied": {
+        "n": 30,
+        "mean": 106,
+        "sd": 6.2,
+        "p95": 115.7,
+        "min": 94.6,
+        "max": 115.8
+      },
+      "revoke": {
+        "n": 30,
+        "mean": 449.7,
+        "sd": 12,
+        "p95": 467.9,
+        "min": 427.7,
+        "max": 472.7
+      },
+      "portalRead": {
+        "n": 30,
+        "mean": 339.4,
+        "sd": 8.7,
+        "p95": 356,
+        "min": 326.2,
+        "max": 357
+      }
+    }
+  },
+  "throughput": {
+    "read_10": {
+      "requests": 10,
+      "errors": 0,
+      "errorRate": 0,
+      "totalMs": 9,
+      "meanMsPerRequest": 0.9
+    },
+    "read_50": {
+      "requests": 50,
+      "errors": 0,
+      "errorRate": 0,
+      "totalMs": 53,
+      "meanMsPerRequest": 1.1
+    },
+    "write_10": {
+      "requests": 10,
+      "succeeded": 10,
+      "failed": 0,
+      "totalMs": 1079,
+      "note": "writes are serialised by the single relayer account, so these queue rather than run in parallel"
+    }
+  },
+  "attackMatrix": [
+    {
+      "adversary": "Authorised insider",
+      "attack": "Request a report with a valid account but the wrong role",
+      "expected": "Denied and logged",
+      "result": "Denied and logged",
+      "evidence": "tx 0x358b77ca44…"
+    },
+    {
+      "adversary": "Authorised insider",
+      "attack": "Request after consent was revoked",
+      "expected": "Denied and logged",
+      "result": "Denied and logged",
+      "evidence": "tx 0xe74c30924f…"
+    },
+    {
+      "adversary": "Storage compromise",
+      "attack": "Read raw IPFS blocks and database rows",
+      "expected": "Ciphertext and metadata only",
+      "result": "Ciphertext only, no readable runs",
+      "evidence": "149 byte block"
+    },
+    {
+      "adversary": "Compromised administrator",
+      "attack": "Look for any route that returns report content",
+      "expected": "None exists",
+      "result": "No content route found",
+      "evidence": "4 admin routes checked"
+    },
+    {
+      "adversary": "Compromised backend",
+      "attack": "Call the consent contract as the backend to grant itself access",
+      "expected": "Reverts: wrong signer",
+      "result": "Rejected (409): The signature does not match the key on record.",
+      "evidence": "signed with GATEWAY_PRIVATE_KEY"
+    },
+    {
+      "adversary": "Token tampering",
+      "attack": "Alter the JWT role claim to administrator",
+      "expected": "Rejected",
+      "result": "Rejected (401)",
+      "evidence": "signature no longer matches"
+    },
+    {
+      "adversary": "Input attack",
+      "attack": "SQL injection in login, and an oversized request body",
+      "expected": "Rejected",
+      "result": "Injection rejected (401); oversized body rejected (413)",
+      "evidence": "parameterised queries, 100 kB body limit"
+    },
+    {
+      "adversary": "Abuse",
+      "attack": "Rapid repeated identifier guessing",
+      "expected": "Rate-limited",
+      "result": "Rate-limited from attempt 31",
+      "evidence": "35 attempts against POST /api/auth/login, shipped default limit"
+    }
+  ],
+  "gas": {
+    "perFunction": {
+      "logAccess": {
+        "min": 114562,
+        "max": 160906,
+        "avg": 145333,
+        "calls": 29
+      },
+      "createConsent": {
+        "min": 63393,
+        "max": 88532,
+        "avg": 70118,
+        "calls": 30
+      },
+      "grantAccess": {
+        "min": 68129,
+        "max": 85229,
+        "avg": 83513,
+        "calls": 10
+      },
+      "registerInstitution": {
+        "min": 80208,
+        "max": 97284,
+        "avg": 85900,
+        "calls": 3
+      },
+      "revokeConsent": {
+        "min": 49215,
+        "max": 66303,
+        "avg": 52063,
+        "calls": 6
+      },
+      "addItem": {
+        "min": 152502,
+        "max": 152600,
+        "avg": 152533,
+        "calls": 4
+      },
+      "registerReport": {
+        "min": 173376,
+        "max": 241039,
+        "avg": 231375,
+        "calls": 28
+      },
+      "withdrawItem": {
+        "min": 44931,
+        "max": 62007,
+        "avg": 53469,
+        "calls": 2
+      },
+      "withdrawReport": {
+        "min": 50108,
+        "max": 64595,
+        "avg": 58800,
+        "calls": 5
+      }
+    },
+    "deployment": {
+      "AuditTrail": {
+        "gas": 688614,
+        "percentOfBlockLimit": 1.1
+      },
+      "ConsentManagement": {
+        "gas": 1627402,
+        "percentOfBlockLimit": 2.7
+      },
+      "ReportRegistry": {
+        "gas": 1364041,
+        "percentOfBlockLimit": 2.3
+      }
+    }
+  },
+  "dependencies": {
+    "npmAudit": {
+      "backend": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "frontend": {
+        "info": 0,
+        "low": 0,
+        "moderate": 3,
+        "high": 1,
+        "critical": 0,
+        "total": 4
+      },
+      "blockchain": {
+        "info": 0,
+        "low": 14,
+        "moderate": 9,
+        "high": 23,
+        "critical": 0,
+        "total": 46
+      }
+    },
+    "slither": "not run in this environment (Python toolchain unavailable); run `slither .` in blockchain/ and record findings"
+  },
+  "designChecks": {
+    "clicksToRevokeFromPortal": 3,
+    "pathToRevoke": [
+      "Open my report (enter ID and secret)",
+      "Who can read it",
+      "Take back access"
+    ],
+    "quickExitOnEveryPage": true,
+    "quickExitKeyboardShortcut": "Escape",
+    "lighthouseAccessibility": "not run in this environment; run Lighthouse in Chrome DevTools and record the score",
+    "measuredResponsive": {
+      "widthsPx": [
+        320,
+        360,
+        390,
+        414,
+        600,
+        768,
+        1024,
+        1440
+      ],
+      "horizontalScrollAtAnyWidth": false,
+      "minimumTouchTargetPx": 44,
+      "minimumFontSizePx": 13
+    },
+    "note": "there are no human participants, so these are design checks, not usability results"
+  },
+  "contractTests": {
+    "passing": 34,
+    "failing": 0,
+    "passRate": 100,
+    "coverage": {
+      "statements": 96.26,
+      "branches": 71.25,
+      "functions": 94.12,
+      "lines": 98.44,
+      "ReportRegistry": {
+        "statements": 95.12,
+        "branches": 72.73,
+        "functions": 92.31,
+        "lines": 97.92
+      },
+      "ConsentManagement": {
+        "statements": 96.36,
+        "branches": 67.31,
+        "functions": 93.75,
+        "lines": 98.46
+      },
+      "AuditTrail": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      },
+      "SignatureLib": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
+  "rateLimitCheck": {
+    "measuredAt": "2026-10-13T22:56:34.847Z",
+    "endpoint": "POST /api/auth/login",
+    "attemptsMade": 35,
+    "firstRateLimitedAtAttempt": 31,
+    "rateLimited": true,
+    "statusSequence": "401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,401,429,429,429,429,429",
+    "configuredLimit": "RATE_LIMIT_LOGIN_PER_15MIN (default 30 per 15 minutes per IP)",
+    "note": "run against the shipped defaults, not the raised limits used by metrics.mjs"
+  },
+  "anonymiser": {
+    "records": 200,
+    "seededIdentifiers": 505,
+    "removed": 347,
+    "missed": 158,
+    "falseRemovals": 3,
+    "precision": 0.991,
+    "recall": 0.687,
+    "missedByKind": {
+      "name": 158
+    },
+    "samples": [
+      {
+        "input": "It happened in room B967 after the party. Tshilidzi Ndlovu pushed me against the wall. My name is Sipho Mudau and he would not leave me alone.",
+        "output": "It happened in [room removed] after the party. Tshilidzi Ndlovu pushed me against the wall. My name is Sipho Mudau and he would not leave me alone."
+      },
+      {
+        "input": "I waited 20 minutes and then walked home with two friends. Ayanda Nemakonde pushed me against the wall. He took my ID card, number 1811284280798.",
+        "output": "I waited 20 minutes and then walked home with two friends. Ayanda Nemakonde pushed me against the wall. He took my ID card, number [id number removed]."
+      },
+      {
+        "input": "It was Mr Van from the residence office. My name is Mpho Dlamini and he would not leave me alone. I told my friend Mpho Dlamini what happened.",
+        "output": "It was [name removed] from the residence office. My name is Mpho Dlamini and he would not leave me alone. I told my friend Mpho Dlamini what happened."
+      },
+      {
+        "input": "My name is Tshilidzi Dlamini and he would not leave me alone. A guy named Ayanda Maluleke followed me to the bus stop. I told my friend Sipho Maluleke what happened.",
+        "output": "My name is Tshilidzi Dlamini and he would not leave me alone. A guy named [name removed] followed me to the bus stop. I told my friend Sipho Maluleke what happened."
+      },
+      {
+        "input": "His student number is 91820401 if that helps. I waited 20 minutes and then walked home with two friends. He keeps calling me on +27 82 099 2824 even at night.",
+        "output": "His student number is [number removed] if that helps. I waited 20 minutes and then walked home with two friends. He keeps calling me on [phone removed] even at night."
+      }
+    ]
+  }
+}

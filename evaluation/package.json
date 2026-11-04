@@ -1,0 +1,9 @@
+{
+  "name": "gbv-evaluation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "scenario": "node scenario.mjs",
+    "anonymiser": "node anonymiser-eval.mjs 200"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "records": 200,
+  "seededIdentifiers": 505,
+  "removed": 347,
+  "missed": 158,
+  "falseRemovals": 3,
+  "precision": 0.991,
+  "recall": 0.687,
+  "missedByKind": {
+    "name": 158
+  },
+  "samples": [
+    {
+      "input": "It happened in room B967 after the party. Tshilidzi Ndlovu pushed me against the wall. My name is Sipho Mudau and he would not leave me alone.",
+      "output": "It happened in [room removed] after the party. Tshilidzi Ndlovu pushed me against the wall. My name is Sipho Mudau and he would not leave me alone."
+    },
+    {
+      "input": "I waited 20 minutes and then walked home with two friends. Ayanda Nemakonde pushed me against the wall. He took my ID card, number 1811284280798.",
+      "output": "I waited 20 minutes and then walked home with two friends. Ayanda Nemakonde pushed me against the wall. He took my ID card, number [id number removed]."
+    },
+    {
+      "input": "It was Mr Van from the residence office. My name is Mpho Dlamini and he would not leave me alone. I told my friend Mpho Dlamini what happened.",
+      "output": "It was [name removed] from the residence office. My name is Mpho Dlamini and he would not leave me alone. I told my friend Mpho Dlamini what happened."
+    },
+    {
+      "input": "My name is Tshilidzi Dlamini and he would not leave me alone. A guy named Ayanda Maluleke followed me to the bus stop. I told my friend Sipho Maluleke what happened.",
+      "output": "My name is Tshilidzi Dlamini and he would not leave me alone. A guy named [name removed] followed me to the bus stop. I told my friend Sipho Maluleke what happened."
+    },
+    {
+      "input": "His student number is 91820401 if that helps. I waited 20 minutes and then walked home with two friends. He keeps calling me on +27 82 099 2824 even at night.",
+      "output": "His student number is [number removed] if that helps. I waited 20 minutes and then walked home with two friends. He keeps calling me on [phone removed] even at night."
+    }
+  ]
+}

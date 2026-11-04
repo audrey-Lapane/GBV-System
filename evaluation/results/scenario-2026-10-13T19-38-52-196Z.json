@@ -1,0 +1,261 @@
+{
+  "reportId": "0xbf6571030d96be0b7328a31714ca4cabf02faad5a1a179c85e0eb1a170c0337c",
+  "steps": [
+    {
+      "step": 0,
+      "text": "Two staff accounts registered, approved and bound to wallets",
+      "ok": true
+    },
+    {
+      "step": 1,
+      "text": "Report submitted with \"Alert only\" (2 encrypted items; anonymiser removed {\"room\":1,\"id_number\":1,\"phone\":1,\"name\":1})",
+      "ok": true,
+      "tx": "0xf7ee43dda0b4700c75e55f2a5870b2f774cdffb02da8b0f527d1040544522933"
+    },
+    {
+      "step": 2,
+      "text": "Office sees alert with only ID, category and date [category,categoryLabel,id,reportDate,reportId,reportStatus,status]",
+      "ok": true
+    },
+    {
+      "step": "2b",
+      "text": "A non-office role cannot read alerts",
+      "ok": true
+    },
+    {
+      "step": 3,
+      "text": "Office requests access (summary + details); request appears for the reporter",
+      "ok": true,
+      "tx": "0x75399305314d1196b3a60d862796a67a5ff9e488b5fed28724e9e102d84d5133"
+    },
+    {
+      "step": "3b",
+      "text": "Office cannot read before approval (attempt logged)",
+      "ok": true,
+      "tx": "0xcc74bfdff5ff7c0b56f59fdc583966ed617a1725573da5004ce11cb1b2ec6161"
+    },
+    {
+      "step": 4,
+      "text": "Reporter approves the request for 30 days",
+      "ok": true,
+      "tx": "0x0867742b00589f982baa1828d1cd62de6c3f466f64d56d6792b178d74e76c6a5",
+      "gas": "85229"
+    },
+    {
+      "step": 5,
+      "text": "Office opens the report: permitted, 2 sections, integrity verified, canaries removed",
+      "ok": true,
+      "tx": "0x3ef348cedd1744ce5588212cd8df9c7416ada767b07e38545df23b29e990c1bb"
+    },
+    {
+      "step": "5b",
+      "text": "Evidence section outside the granted scope is denied",
+      "ok": true
+    },
+    {
+      "step": 6,
+      "text": "Social worker without a grant: denied and logged",
+      "ok": true,
+      "tx": "0x167843d3f9d4aa13f2f2fe22eefc423abcd0aa4f6a3faf437c1148f1a4cdde22"
+    },
+    {
+      "step": 7,
+      "text": "Reporter revokes the office's grant",
+      "ok": true,
+      "tx": "0xaf3271ac3abb33fbe66f1a920528a7129d067d944b245c6d6788849c0fa9aed2"
+    },
+    {
+      "step": 8,
+      "text": "Office requests again: denied on the first attempt",
+      "ok": true,
+      "tx": "0x0e5ac34e902969599865b9ba42c36f3733a3b434cd52c02ce19a7205bf9c45b0"
+    },
+    {
+      "step": "8b",
+      "text": "A grant signed by any key other than the reporter's is rejected",
+      "ok": true
+    },
+    {
+      "step": "8c",
+      "text": "The portal refuses a wrong secret",
+      "ok": true
+    },
+    {
+      "step": 9,
+      "text": "Reporter withdraws the report: keys destroyed, ciphertext unpinned",
+      "ok": true,
+      "tx": "0x3d3f2f2f1162500d5ab57bc58a26811a3c6c93d97257bad7ef269989d04c9869"
+    },
+    {
+      "step": 10,
+      "text": "Reconcile: 13 chain events vs 13 mirror rows, 0 mismatches",
+      "ok": true
+    }
+  ],
+  "transactions": [
+    "0xf7ee43dda0b4700c75e55f2a5870b2f774cdffb02da8b0f527d1040544522933",
+    "0x365e4c26e4e48a310a0a20ee74eeab0d9fb4ec7663352ea6828ae5b292ff61d8",
+    "0x75399305314d1196b3a60d862796a67a5ff9e488b5fed28724e9e102d84d5133",
+    "0xcc74bfdff5ff7c0b56f59fdc583966ed617a1725573da5004ce11cb1b2ec6161",
+    "0x0867742b00589f982baa1828d1cd62de6c3f466f64d56d6792b178d74e76c6a5",
+    "0x3ef348cedd1744ce5588212cd8df9c7416ada767b07e38545df23b29e990c1bb",
+    "0x27f1d975d485469d0575ef7a22a71bbce8bdf8616b863d39afd3130d46c14571",
+    "0x167843d3f9d4aa13f2f2fe22eefc423abcd0aa4f6a3faf437c1148f1a4cdde22",
+    "0xaf3271ac3abb33fbe66f1a920528a7129d067d944b245c6d6788849c0fa9aed2",
+    "0x0e5ac34e902969599865b9ba42c36f3733a3b434cd52c02ce19a7205bf9c45b0",
+    "0x3d3f2f2f1162500d5ab57bc58a26811a3c6c93d97257bad7ef269989d04c9869"
+  ],
+  "history": [
+    {
+      "action": "report_registered",
+      "role": null,
+      "sections": null,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": null,
+      "txHash": "0xf7ee43dda0b4700c75e55f2a5870b2f774cdffb02da8b0f527d1040544522933",
+      "blockNumber": 6,
+      "time": 1791920331
+    },
+    {
+      "action": "item_added",
+      "role": null,
+      "sections": 1,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": null,
+      "txHash": "0xf7ee43dda0b4700c75e55f2a5870b2f774cdffb02da8b0f527d1040544522933",
+      "blockNumber": 6,
+      "time": 1791920331
+    },
+    {
+      "action": "item_added",
+      "role": null,
+      "sections": 2,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": null,
+      "txHash": "0xf7ee43dda0b4700c75e55f2a5870b2f774cdffb02da8b0f527d1040544522933",
+      "blockNumber": 6,
+      "time": 1791920331
+    },
+    {
+      "action": "alert_sent",
+      "role": 1,
+      "sections": null,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": null,
+      "txHash": "0x365e4c26e4e48a310a0a20ee74eeab0d9fb4ec7663352ea6828ae5b292ff61d8",
+      "blockNumber": 7,
+      "time": 1791920332
+    },
+    {
+      "action": "access_requested",
+      "role": 1,
+      "sections": 3,
+      "permitted": null,
+      "staffRef": "0x216cc8b4f711d0dc95ea268d2534dd299f46a4dce6ac89eeb947617becfa5001",
+      "validUntil": null,
+      "txHash": "0x75399305314d1196b3a60d862796a67a5ff9e488b5fed28724e9e102d84d5133",
+      "blockNumber": 8,
+      "time": 1791920333
+    },
+    {
+      "action": "access_attempt",
+      "role": 1,
+      "sections": 1,
+      "permitted": false,
+      "staffRef": "0x216cc8b4f711d0dc95ea268d2534dd299f46a4dce6ac89eeb947617becfa5001",
+      "validUntil": null,
+      "txHash": "0xcc74bfdff5ff7c0b56f59fdc583966ed617a1725573da5004ce11cb1b2ec6161",
+      "blockNumber": 9,
+      "time": 1791920334
+    },
+    {
+      "action": "consent_granted",
+      "role": 1,
+      "sections": 3,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": 1794512329,
+      "txHash": "0x0867742b00589f982baa1828d1cd62de6c3f466f64d56d6792b178d74e76c6a5",
+      "blockNumber": 10,
+      "time": 1791920335
+    },
+    {
+      "action": "access_attempt",
+      "role": 1,
+      "sections": 3,
+      "permitted": true,
+      "staffRef": "0x216cc8b4f711d0dc95ea268d2534dd299f46a4dce6ac89eeb947617becfa5001",
+      "validUntil": null,
+      "txHash": "0x3ef348cedd1744ce5588212cd8df9c7416ada767b07e38545df23b29e990c1bb",
+      "blockNumber": 11,
+      "time": 1791920336
+    },
+    {
+      "action": "access_attempt",
+      "role": 1,
+      "sections": 4,
+      "permitted": false,
+      "staffRef": "0x216cc8b4f711d0dc95ea268d2534dd299f46a4dce6ac89eeb947617becfa5001",
+      "validUntil": null,
+      "txHash": "0x27f1d975d485469d0575ef7a22a71bbce8bdf8616b863d39afd3130d46c14571",
+      "blockNumber": 12,
+      "time": 1791920337
+    },
+    {
+      "action": "access_attempt",
+      "role": 4,
+      "sections": 1,
+      "permitted": false,
+      "staffRef": "0xd16190cfc4170a3bd5b8c7970372ff938fbcd7cf766b9b4ccdb216de1e3a208f",
+      "validUntil": null,
+      "txHash": "0x167843d3f9d4aa13f2f2fe22eefc423abcd0aa4f6a3faf437c1148f1a4cdde22",
+      "blockNumber": 13,
+      "time": 1791920338
+    },
+    {
+      "action": "consent_revoked",
+      "role": 1,
+      "sections": null,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": null,
+      "txHash": "0xaf3271ac3abb33fbe66f1a920528a7129d067d944b245c6d6788849c0fa9aed2",
+      "blockNumber": 14,
+      "time": 1791920339
+    },
+    {
+      "action": "access_attempt",
+      "role": 1,
+      "sections": 1,
+      "permitted": false,
+      "staffRef": "0x216cc8b4f711d0dc95ea268d2534dd299f46a4dce6ac89eeb947617becfa5001",
+      "validUntil": null,
+      "txHash": "0x0e5ac34e902969599865b9ba42c36f3733a3b434cd52c02ce19a7205bf9c45b0",
+      "blockNumber": 15,
+      "time": 1791920340
+    },
+    {
+      "action": "report_withdrawn",
+      "role": null,
+      "sections": null,
+      "permitted": null,
+      "staffRef": null,
+      "validUntil": null,
+      "txHash": "0x3d3f2f2f1162500d5ab57bc58a26811a3c6c93d97257bad7ef269989d04c9869",
+      "blockNumber": 16,
+      "time": 1791920341
+    }
+  ],
+  "reconcile": {
+    "checkedAt": "2026-10-13T19:38:52.193Z",
+    "reports": 1,
+    "chainEvents": 13,
+    "mirrorRows": 13,
+    "mismatches": [],
+    "ok": true
+  }
+}

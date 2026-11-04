@@ -1,0 +1,14 @@
+.env
+node_modules/
+blockchain/artifacts/
+blockchain/cache/
+blockchain/coverage/
+blockchain/coverage.json
+blockchain/typechain-types/
+blockchain/deployed-addresses.json
+backend/src/contracts/
+frontend/dist/
+frontend/dev-dist/
+evaluation/results/*.json.tmp
+*.log
+.DS_Store

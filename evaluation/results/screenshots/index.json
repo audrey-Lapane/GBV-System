@@ -1,0 +1,117 @@
+[
+  {
+    "id": "S00-home",
+    "caption": "Home page: three entry points and the Leave now button",
+    "file": "S00-home.png"
+  },
+  {
+    "id": "S24-submit-step1",
+    "caption": "Report step 1: category, date, general area and what happened",
+    "file": "S24-submit-step1.png"
+  },
+  {
+    "id": "S24b-submit-step2",
+    "caption": "Report step 2: optional full details",
+    "file": "S24b-submit-step2.png"
+  },
+  {
+    "id": "S24c-submit-step3",
+    "caption": "Report step 3: optional evidence, with the metadata warning",
+    "file": "S24c-submit-step3.png"
+  },
+  {
+    "id": "S24d-submit-step4",
+    "caption": "Report step 4: the sharing choice, neither option pre-selected",
+    "file": "S24d-submit-step4.png"
+  },
+  {
+    "id": "S25-confirmation",
+    "caption": "Confirmation: the report ID and secret, shown once only",
+    "file": "S25-confirmation.png"
+  },
+  {
+    "id": "S26-consent-management",
+    "caption": "Reporter portal: who can read the report",
+    "file": "S26-consent-management.png"
+  },
+  {
+    "id": "S26b-request-approval",
+    "caption": "Reporter decides: which sections, for how long, approve or deny",
+    "file": "S26b-request-approval.png"
+  },
+  {
+    "id": "S27-revoked",
+    "caption": "After revocation: the office has no access",
+    "file": "S27-revoked.png"
+  },
+  {
+    "id": "S28-office-alerts",
+    "caption": "Designated office: the alert shows only ID, category and date",
+    "file": "S28-office-alerts.png"
+  },
+  {
+    "id": "S28a-staff-register",
+    "caption": "Staff registration, binding one wallet to one staff number",
+    "file": "S28a-staff-register.png"
+  },
+  {
+    "id": "S28b-request-sent",
+    "caption": "Access request sent to the reporter",
+    "file": "S28b-request-sent.png"
+  },
+  {
+    "id": "S29-permitted",
+    "caption": "Permitted view: only granted sections, each with its integrity check",
+    "file": "S29-permitted.png"
+  },
+  {
+    "id": "S30-denied",
+    "caption": "Access denied before consent, recorded on-chain",
+    "file": "S30-denied.png"
+  },
+  {
+    "id": "S30b-denied-after-revoke",
+    "caption": "Next attempt after revocation: refused and recorded",
+    "file": "S30b-denied-after-revoke.png"
+  },
+  {
+    "id": "S31-admin-approvals",
+    "caption": "Administrator: pending accounts awaiting wallet binding",
+    "file": "S31-admin-approvals.png"
+  },
+  {
+    "id": "S32-admin-statistics",
+    "caption": "Administrator statistics: counts only, no report content",
+    "file": "S32-admin-statistics.png"
+  },
+  {
+    "id": "S33-mobile-home",
+    "caption": "Phone layout: the home page at 390px",
+    "file": "S33-mobile-home.png"
+  },
+  {
+    "id": "S33b-mobile-report",
+    "caption": "Phone layout: the report form",
+    "file": "S33b-mobile-report.png"
+  },
+  {
+    "id": "S34-quick-exit",
+    "caption": "The Leave now button stays visible on every page",
+    "file": "S34-quick-exit.png"
+  },
+  {
+    "id": "S36-audit-timeline",
+    "caption": "Reporter audit timeline: every attempt with its transaction",
+    "file": "S36-audit-timeline.png"
+  },
+  {
+    "id": "S40-audit-check",
+    "caption": "Reconciliation: the database mirror compared against the chain",
+    "file": "S40-audit-check.png"
+  },
+  {
+    "id": "S42-withdraw",
+    "caption": "Withdrawal: keys destroyed, so content can no longer be read",
+    "file": "S42-withdraw.png"
+  }
+]
